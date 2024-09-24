@@ -1,11 +1,17 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";  // เพิ่ม GoogleProvider
 import { connectMongoDB } from "../../../../../lib/mongodb";
 import User from "../../../../../models/user";
 import bcrypt from 'bcryptjs'
 
 const authOptions = {
     providers: [
+        // เพิ่ม GoogleProvider เข้าไป
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID, 
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET
+        }),
         CredentialsProvider({
           name: 'credentials',
           credentials: {},
@@ -74,4 +80,3 @@ const authOptions = {
 const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST }
-
