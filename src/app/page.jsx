@@ -10,10 +10,13 @@ export default function Home() {
   const { data: session } = useSession();
 
   return (
-    <main className="bg-white min-h-screen flex flex-col">
+    <main
+      className="bg-cover bg-center min-h-screen flex flex-col"
+      style={{ backgroundImage: "url('/images/food_bg.jpg')" }}
+    >
       <Container>
         <Navbar session={session} />
-        <div className="flex-grow flex flex-col items-center justify-center text-center p-6">
+        <div className="flex-grow flex flex-col justify-center text-center p-6 w-3/4 ml-auto"> {/* w-3/4 ทำให้คอนเทนต์ครอบคลุม 75% ของความกว้าง */}
           <h3 className="text-6xl font-bold text-black mb-4">
             Welcome to DishXDash!
           </h3>
